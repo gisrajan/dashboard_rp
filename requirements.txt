@@ -1,0 +1,10 @@
+pandas
+pyodk
+plotly
+requests
+smtplib
+email
+numpy
+seaborn
+datetime
+pytz
