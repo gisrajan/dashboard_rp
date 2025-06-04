@@ -1,5 +1,3 @@
-name: Run Jupyter Notebook
-
 on:
   schedule:
     - cron: '0 0 * * *'  # Runs daily at midnight UTC
@@ -21,7 +19,15 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install nbconvert
+          pip install nbconvert ipykernel jupyter
+
+      - name: Add Python Kernel
+        run: |
+          python -m ipykernel install --name python3 --display-name "Python 3"
+
+      - name: Check available Jupyter kernels
+        run: |
+          jupyter kernelspec list
 
       - name: Execute notebook
         run: |
