@@ -21,9 +21,9 @@ jobs:
           pip install -r requirements.txt
           pip install nbconvert ipykernel jupyter
 
-      - name: Add Python Kernel
+      - name: Install Jupyter Kernel (User Scope)
         run: |
-          python -m ipykernel install --name python3 --display-name "Python 3"
+          python -m ipykernel install --user --name python3 --display-name "Python 3"
 
       - name: Check available Jupyter kernels
         run: |
