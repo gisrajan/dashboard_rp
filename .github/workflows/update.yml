@@ -17,8 +17,8 @@ jobs:
       ODK_PASSWORD: ${{ secrets.ODK_PASSWORD }}
 
       # Custom secrets if needed
-      API_TOKEN: ${{ secrets.API_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #API_TOKEN: ${{ secrets.API_TOKEN }}
+      #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout repository
