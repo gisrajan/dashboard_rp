@@ -33,7 +33,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install nbconvert ipykernel jupyter
-          pip install git+https://${GITHUB_TOKEN}@github.com/myorg/my-secret-utils.git
+          #pip install git+https://${GITHUB_TOKEN}@github.com/myorg/my-secret-utils.git
 
       - name: Install Jupyter Kernel (User Scope)
         run: |
@@ -42,10 +42,6 @@ jobs:
       - name: Check available Jupyter kernels
         run: |
           jupyter kernelspec list
-
-      - name: Run ODK client script
-        run: |
-          python your_script.py
 
       - name: Execute notebook
         run: |
