@@ -1,11 +1,24 @@
+name: ODK Dashboard Pipeline
+
 on:
   schedule:
     - cron: '0 0 * * *'  # Runs daily at midnight UTC
-  workflow_dispatch:     # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      # ODK secrets
+      ODK_PROJECT_ID: ${{ secrets.ODK_PROJECT_ID }}
+      ODK_URL: ${{ secrets.ODK_URL }}
+      ODK_USERNAME: ${{ secrets.ODK_USERNAME }}
+      ODK_PASSWORD: ${{ secrets.ODK_PASSWORD }}
+
+      # Custom secrets if needed
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -20,6 +33,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install nbconvert ipykernel jupyter
+          pip install git+https://${GITHUB_TOKEN}@github.com/myorg/my-secret-utils.git
 
       - name: Install Jupyter Kernel (User Scope)
         run: |
@@ -28,6 +42,10 @@ jobs:
       - name: Check available Jupyter kernels
         run: |
           jupyter kernelspec list
+
+      - name: Run ODK client script
+        run: |
+          python your_script.py
 
       - name: Execute notebook
         run: |
