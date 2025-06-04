@@ -31,7 +31,7 @@ jobs:
 
       - name: Execute notebook
         run: |
-          jupyter nbconvert --to html --execute rp_dashboard.ipynb --output index.html
+          jupyter nbconvert --to html --execute --no-input rp_dashboard.ipynb --output index.html
 
       - name: Commit and push changes
         run: |
