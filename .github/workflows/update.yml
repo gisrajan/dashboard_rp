@@ -1,4 +1,4 @@
-name: Update Dashboard
+name: Run Jupyter Notebook
 
 on:
   schedule:
@@ -21,9 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install nbconvert
 
-      - name: Run dashboard generator
-        run: python rp_dashboard.py
+      - name: Execute notebook
+        run: |
+          jupyter nbconvert --to html --execute dashboard.ipynb --output index.html
 
       - name: Commit and push changes
         run: |
