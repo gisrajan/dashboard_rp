@@ -1,10 +1,11 @@
-pandas
-pyodk
-plotly
 requests
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+pyodk
 smtplib
 email
-numpy
-seaborn
 datetime
 pytz
