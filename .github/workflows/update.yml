@@ -50,6 +50,7 @@ jobs:
           echo "base_url = \"${{ secrets.ODK_URL }}\"" >> .pyodk_config.toml
           echo "username = \"${{ secrets.ODK_USERNAME }}\"" >> .pyodk_config.toml
           echo "password = \"${{ secrets.ODK_PASSWORD }}\"" >> .pyodk_config.toml
+          echo "default_project_id = \"${{ secrets.ODK_PROJECT_ID }}\"" >> .pyodk_config.toml
           
           # Optional: Verify the file content (for debugging, remove for production)
           # The secrets will be redacted in the logs if you 'cat' it.
