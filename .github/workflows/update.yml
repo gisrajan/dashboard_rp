@@ -47,9 +47,9 @@ jobs:
           # Use the exact secret names as stored in GitHub.
           # Assuming you have secrets named ODK_CENTRAL_BASE_URL, ODK_CENTRAL_USERNAME, ODK_CENTRAL_PASSWORD.
           echo '[central]' > .pyodk_config.toml
-          echo "base_url = \"${{ secrets.ODK_CENTRAL_BASE_URL }}\"" >> .pyodk_config.toml
-          echo "username = \"${{ secrets.ODK_CENTRAL_USERNAME }}\"" >> .pyodk_config.toml
-          echo "password = \"${{ secrets.ODK_CENTRAL_PASSWORD }}\"" >> .pyodk_config.toml
+          echo "base_url = \"${{ secrets.ODK_URL }}\"" >> .pyodk_config.toml
+          echo "username = \"${{ secrets.ODK_USERNAME }}\"" >> .pyodk_config.toml
+          echo "password = \"${{ secrets.ODK_PASSWORD }}\"" >> .pyodk_config.toml
           
           # Optional: Verify the file content (for debugging, remove for production)
           # The secrets will be redacted in the logs if you 'cat' it.
