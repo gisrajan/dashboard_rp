@@ -43,6 +43,22 @@ jobs:
         run: |
           jupyter kernelspec list
 
+      - name: Create .pyodk_config.toml file from secrets
+        run: |
+          # The '>>' appends to the file, '>' creates/overwrites it initially
+          echo '[central]' > .pyodk_config.toml
+          echo "base_url = \"${{ secrets.ODK_CENTRAL_BASE_URL }}\"" >> .pyodk_config.toml
+          echo "username = \"${{ secrets.ODK_CENTRAL_USERNAME }}\"" >> .pyodk_config.toml
+          echo "password = \"${{ secrets.ODK_CENTRAL_PASSWORD }}\"" >> .pyodk_config.toml
+          
+          # Optional: Verify the file content (for debugging, remove for production)
+          # cat .pyodk_config.toml
+
+      - name: Set PYODK_CONFIG_FILE environment variable (optional, but good practice)
+        # This tells pyodk exactly where to find the config file if it's not in the default location
+        run: echo "PYODK_CONFIG_FILE=$(pwd)/.pyodk_config.toml" >> $GITHUB_ENV
+
+
       - name: Execute notebook
         run: |
           jupyter nbconvert --to html --execute --no-input rp_dashboard.ipynb --output index.html
