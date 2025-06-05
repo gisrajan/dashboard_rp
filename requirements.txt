@@ -1,9 +1,0 @@
-requests
-pandas
-numpy
-matplotlib
-seaborn
-plotly
-pyodk
-datetime
-pytz
